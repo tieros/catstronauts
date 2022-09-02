@@ -8,6 +8,19 @@ const typeDefs = gql`
         track(id: ID!): Track
     }
 
+    type Mutation {
+        "Returns a response consisted of information and track"
+        incrementTrackViews(id: ID!): incrementTrackViewsResponse!
+    }
+
+    type incrementTrackViewsResponse {
+        code: Int!
+        success: Boolean!
+        message: String!
+        "Returning track is nullable since an error might be occur when updating the data"
+        track: Track
+    }
+
 "A track is a group of Modules that teaches about a specific topic"
     type Track {
         id: ID!
